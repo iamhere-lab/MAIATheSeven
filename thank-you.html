@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <title>Thank You | MAIA The Seven Basavanagudi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ty{min-height:100vh;display:flex;flex-direction:column;background:var(--bg-alt)}
+    .ty__top{padding:22px 24px}
+    .ty__main{flex:1;display:grid;place-items:center;padding:40px 24px 80px}
+    .ty__card{background:#fff;border-radius:var(--radius-xl);box-shadow:var(--shadow-float);padding:56px 44px 44px;max-width:560px;width:100%;text-align:center}
+    .ty__icon{width:72px;height:72px;border-radius:50%;background:var(--lime);display:grid;place-items:center;margin:0 auto 26px}
+    .ty__icon svg{width:32px;height:32px;stroke-width:2.5;color:var(--dark)}
+    .ty__card h1{font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0 0 14px;color:var(--ink)}
+    .ty__card .lead{max-width:420px;margin:0 auto 30px}
+    .ty__steps{text-align:left;background:var(--bg-alt);border-radius:var(--radius-md);padding:22px 24px;margin:0 0 30px;display:grid;gap:14px}
+    .ty__steps li{display:flex;gap:12px;font-size:13px;color:#3b4a4a;list-style:none}
+    .ty__steps strong{color:var(--ink)}
+    .ty__actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .ty__verified{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7a8686;margin-top:26px}
+    .ty__verified svg{color:#b8d94c;width:12px;height:12px}
+    @media (max-width:600px){.ty__card{padding:40px 24px 32px}}
+  </style>
+</head>
+<body class="ty">
+  <div class="ty__top"><a href="index.html" class="logo"><span class="logo__dot"></span>MAIA SEVEN</a></div>
+  <main class="ty__main">
+    <div class="ty__card">
+      <div class="ty__icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h1>Thank you, <span data-name>there</span>.</h1>
+      <p class="lead">Your interest in MAIA The Seven, Basavanagudi has been registered. Our team will reach out on your verified number shortly.</p>
+      <ul class="ty__steps">
+        <li><span class="check"></span><div><strong>Within 24 hours</strong> — a MAIA sales advisor will call to understand your requirement.</div></li>
+        <li><span class="check"></span><div><strong>Project details</strong> — floor plans, pricing and early-bird offers will be shared on your email.</div></li>
+        <li><span class="check"></span><div><strong>Site visit</strong> — we'll help you schedule a private walkthrough at your convenience.</div></li>
+      </ul>
+      <div class="ty__actions">
+        <a href="index.html" class="btn btn--dark">Back to Home</a>
+        <a href="index.html#gallery" class="btn btn--lime">View Gallery</a>
+      </div>
+      <p class="ty__verified"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg> Mobile number verified via OTP</p>
+    </div>
+  </main>
+  <script>
+    (function(){
+      var n = new URLSearchParams(location.search).get("name");
+      if (n) document.querySelector("[data-name]").textContent = n.split(" ")[0];
+    })();
+  </script>
+</body>
+</html>

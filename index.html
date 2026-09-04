@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/maia-the-seven.png">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#1B2322" />
+
+  <title>MAIA The Seven Basavanagudi | Luxury 4 BHK in South Bangalore</title>
+  <meta name="description" content="MAIA The Seven, Basavanagudi — 128 ultra-luxury 4 BHK residences across 3.7 acres in South Bengaluru. Starting ₹12.5 Cr*. Register interest for early-bird offers." />
+  <meta property="og:title" content="MAIA The Seven Basavanagudi | Luxury 4 BHK in South Bangalore" />
+  <meta property="og:description" content="Ultra-luxury 4 BHK condominiums starting from ₹12.5 Cr*. G+36 floors, 3.7 acres, 128 units only." />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- No analytics / conversion-tracking tags are loaded on this page by design. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="hero__bg"><img src="images/hero-bg.jpg" alt="MAIA The Seven twin towers, Basavanagudi" fetchpriority="high" /></div>
+  <div class="hero__inner container">
+    <div class="hero__copy">
+      <span class="badge">Now Launching in Basavanagudi</span>
+      <h1 class="hero__title">MAIA<br>The Seven</h1>
+      <p class="hero__lead">Ultra-luxury 4 BHK condominiums starting from <strong>₹12.5 Cr*</strong>. Experience the pinnacle of privacy and elegance.</p>
+      <div class="hero__actions">
+        <a href="#overview" class="btn btn--dark">Explore Project</a>
+        <a href="#pricing" class="btn btn--ghost">View Pricing</a>
+      </div>
+      <ul class="hero__stats">
+        <li><strong>4 BHK</strong><span>Configuration</span></li>
+        <li><strong>4,400+</strong><span>Sq.ft. onwards</span></li>
+        <li><strong>128</strong><span>Limited units</span></li>
+      </ul>
+    </div>
+
+    <!-- Home page form (OTP-verified) -->
+    <aside class="hero__form card-form" id="hero-form-card">
+      <h2 class="card-form__title">Register Interest</h2>
+      <p class="card-form__sub">Get exclusive early-bird offers and project details.</p>
+      <form class="lead-form" data-form="hero" novalidate>
+        <p class="lead-form__hint">Fill out the form below for exclusive project details.</p>
+        <div class="lead-form__fields">
+          <label class="field">
+            <span class="field__label">Full Name</span>
+            <input type="text" name="name" placeholder="John Doe" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span class="field__label">Mobile Number</span>
+            <input type="tel" name="phone" placeholder="+91 98765 43210" inputmode="numeric" autocomplete="tel" required />
+          </label>
+          <label class="field">
+            <span class="field__label">Email Address</span>
+            <input type="email" name="email" placeholder="john@example.com" autocomplete="email" required />
+          </label>
+          <button type="submit" class="btn btn--dark btn--block">Request Information</button>
+          <p class="lead-form__secure"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg> Secure &amp; Private</p>
+        </div>
+        <div class="otp-step" hidden></div>
+        <div class="lead-form__success" hidden>
+          <div class="lead-form__success-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Thank you!</h3>
+          <p>Your number is verified and our team will reach out shortly with project details.</p>
+        </div>
+        <p class="lead-form__legal">By submitting, you agree to our privacy policy and terms of service.</p>
+      </form>
+    </aside>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav__pill">
+    <a href="#home" class="logo"><span class="logo__dot"></span>MAIA SEVEN</a>
+    <ul class="nav__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#pricing">Floor Plans</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#overview">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="btn btn--dark btn--sm" data-open-modal>Enquire Now</button>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ QUICK FACTS ============ -->
+<section class="facts container" id="overview">
+  <div class="fact">
+    <span class="fact__icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></span>
+    <span class="fact__label">Structure</span>
+    <strong class="fact__value">G + 36 Floors</strong>
+  </div>
+  <div class="fact">
+    <span class="fact__icon"><svg viewBox="0 0 24 24"><path d="M3 21L21 3M3 21v-6M3 21h6M21 3h-6M21 3v6"/></svg></span>
+    <span class="fact__label">Size Range</span>
+    <strong class="fact__value">4,400 - 4,950 sq.ft.</strong>
+  </div>
+  <div class="fact">
+    <span class="fact__icon"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+    <span class="fact__label">Land Area</span>
+    <strong class="fact__value">3.7 Acres</strong>
+  </div>
+  <div class="fact">
+    <span class="fact__icon"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg></span>
+    <span class="fact__label">Exclusivity</span>
+    <strong class="fact__value">128 Units Only</strong>
+  </div>
+</section>
+
+<!-- ============ KEY BENEFITS ============ -->
+<section class="benefits container">
+  <div class="benefits__visual">
+    <div class="benefits__frame">
+      <div class="benefits__card">
+        <div class="benefits__card-head">
+          <div><span class="tiny-label">Total Residences</span><strong>128</strong></div>
+          <span class="benefits__card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg></span>
+        </div>
+        <div class="benefits__card-grid">
+          <div><span class="tiny-label">Amenities</span><strong>40+</strong></div>
+          <div><span class="tiny-label">Open Space</span><strong>72%</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="benefits__price"><strong>₹12.5 Cr+</strong><span>Starting Investment</span></div>
+  </div>
+  <div class="benefits__copy">
+    <h2 class="h2">Key Benefits of Choosing<br><em class="lime-italic">MAIA Seven</em></h2>
+    <p class="lead">Our residences are designed to elevate your lifestyle, preserve heritage, and provide a sanctuary in the heart of the city.</p>
+    <ul class="checklist">
+      <li><span class="check"></span><div><strong>Unmatched Privacy &amp; Low Density</strong><p>Only 128 exclusive residences spread across 3.7 acres, ensuring an unparalleled sense of space.</p></div></li>
+      <li><span class="check"></span><div><strong>Heritage Meets Modernity</strong><p>Located in Basavanagudi, blending the cultural richness of South Bangalore with ultra-modern architecture.</p></div></li>
+      <li><span class="check"></span><div><strong>Hotel-Inspired Services</strong><p>Experience white-glove concierge, gourmet dining, and elite wellness facilities at your doorstep.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VISIONARY FEATURES ============ -->
+<section class="features section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Visionary Features</h2>
+      <p class="lead">Experience a blend of digital accuracy and sustainable execution in every detail.</p>
+    </div>
+    <div class="slider" data-slider>
+      <div class="slider__track">
+        <article class="slide is-active">
+          <div class="slide__img"><img src="images/feature-1.jpg" alt="Construction crane with MAIA branding" loading="lazy" /></div>
+          <div class="slide__body">
+            <span class="eyebrow eyebrow--lime"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 8-8 8-13a8 8 0 10-16 0c0 5 4 9 8 13z"/></svg> Sustainable Design</span>
+            <h3>Eco-Engineered Construction</h3>
+            <p>MAIA The Seven employs a technologically advanced construction methodology that blends digital accuracy with sustainable execution. This system minimizes unnecessary material use while enhancing structural integrity at every stage. From initial planning to final detailing, precision engineering drives better resource management, long-term durability, and environmentally responsible development. The result is a structure that is both future-ready and deeply aligned with eco-conscious building principles.</p>
+          </div>
+        </article>
+        <article class="slide">
+          <div class="slide__img"><img src="images/feature-2.jpg" alt="Landscaped sky bridge between towers" loading="lazy" /></div>
+          <div class="slide__body">
+            <span class="eyebrow eyebrow--lime"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/></svg> Signature Architecture</span>
+            <h3>Twin Towers, One Sky Bridge</h3>
+            <p>Two landmark residential towers are joined by sculptural, landscaped sky bridges that create a distinctive silhouette on the South Bengaluru skyline. The bridges double as elevated lounges and garden decks, giving residents a shared vantage point over the tree-lined streets of Basavanagudi while keeping each wing private and self-contained.</p>
+          </div>
+        </article>
+        <article class="slide">
+          <div class="slide__img"><img src="images/feature-3.jpg" alt="Open-plan 4 BHK residence interior" loading="lazy" /></div>
+          <div class="slide__body">
+            <span class="eyebrow eyebrow--lime"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 12h18M12 3v18"/></svg> Spatial Clarity</span>
+            <h3>Three-Side-Open, No Common Walls</h3>
+            <p>Every residence is planned with more than three open sides and no shared walls with a neighbour, so light, air and views flow through the home uninterrupted. Expansive 4,400–4,950 sq.ft. layouts with generous decks bring the openness of a bungalow to a secure, high-rise address.</p>
+          </div>
+        </article>
+      </div>
+      <div class="slider__controls">
+        <button class="slider__btn" data-prev aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="slider__btn" data-next aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="slider__dots" data-dots></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery section" id="gallery">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Project Gallery</h2>
+      <p class="lead">The Gallery at MAIA Seven, Basavanagudi, offers a visual journey into one of South Bangalore's most carefully curated luxury developments. Every image reflects the project's architectural finesse, expansive spatial planning, and MAIA's distinctive design ideology.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gallery__item gallery__item--lg"><img src="images/gallery-lobby.jpg" alt="MAIA entrance lobby" loading="lazy"></figure>
+      <figure class="gallery__item"><img src="images/gallery-bedroom.jpg" alt="Master bedroom" loading="lazy"></figure>
+      <figure class="gallery__item"><img src="images/gallery-living.jpg" alt="Living room" loading="lazy"></figure>
+      <figure class="gallery__item"><img src="images/gallery-balcony.jpg" alt="Private deck" loading="lazy"></figure>
+      <figure class="gallery__item gallery__item--wide"><img src="images/gallery-entrance.jpg" alt="MAIA entrance drive" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMENITIES ============ -->
+<section class="amenities section section--dark" id="amenities">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">World-Class Lifestyle Services</h2>
+      <p class="lead">Simplify your life with our curated, quality-focused residential services.</p>
+    </div>
+    <div class="amenities__grid">
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Infinity Pool &amp; Sky Pools</strong>
+        <p>Temperature-controlled sky pools on the 4th floor and rooftop, featuring lap zones and a separate shallow area for children.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M5 3v7a3 3 0 006 0V3M8 3v18M17 3c-2 0-3 2-3 5v3h3v10"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Gourmet Dining &amp; Chef</strong>
+        <p>Exclusive in-house catering with a dedicated celebrity chef for private events and daily nutritional meals for residents.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><circle cx="8" cy="14" r="4"/><circle cx="16" cy="14" r="4"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Biophilic Landscape</strong>
+        <p>Over 72% open area with native flora, vertical gardens, and oxygen-rich micro-climates designed by top-tier landscape architects.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M4 8l4-4M16 20l4-4M3 5l2-2M19 21l2-2"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Elite Fitness Center</strong>
+        <p>State-of-the-art gym equipped with Technogym Artis line, dedicated cross-fit zones, and professional strength training equipment.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Yoga &amp; Zen Decks</strong>
+        <p>Sunrise yoga platforms and quiet meditation zones with bamboo screening and ambient water features for spiritual well-being.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>Private Theatre &amp; Gaming</strong>
+        <p>A 20-seater 4K Dolby Atmos home theatre and a high-tech gaming lounge with VR capabilities and classic billiards.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>5-Tier Smart Security</strong>
+        <p>Biometric access, AI-based perimeter surveillance, RFID vehicle tracking, and 24/7 manned security protocols.</p>
+      </button>
+      <button class="amenity" data-open-modal>
+        <span class="amenity__icon"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 21c0-4 3-7 7-7 1.5 0 3 .5 4 1M16 19l2 2 4-4"/></svg></span>
+        <span class="amenity__arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        <strong>MAIA Life Concierge</strong>
+        <p>White-glove concierge services including travel planning, housekeeping coordination, and event management.</p>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="location section" id="location">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Basavanagudi, Bengaluru</h2>
+      <p class="lead">The cultural heart of South Bengaluru, known for its tree-lined streets, historic charm, and exceptional connectivity.</p>
+    </div>
+    <div class="location__grid">
+      <div class="location__map">
+        <iframe title="MAIA The Seven location map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.610820154338!2d77.5642336!3d12.9327166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15003d153079%3A0x66cc7465150204cf!2sMAIA%20ESTATES-%20THE%20SEVEN!5e0!3m2!1sen!2sin!4v1788499755748!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="location__highlights">
+        <h3 class="h3">Location Highlights</h3>
+        <div class="highlights">
+          <div class="highlight">
+            <span class="highlight__icon"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 8-8 8-13a8 8 0 10-16 0c0 5 4 9 8 13z"/></svg></span>
+            <strong>Culture &amp; Heritage</strong>
+            <p>Minutes away from Bull Temple and Bugle Rock Park, preserving the 16th-century soul of Bengaluru.</p>
+          </div>
+          <div class="highlight">
+            <span class="highlight__icon"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 14H5zM9 7V5a3 3 0 016 0v2"/></svg></span>
+            <strong>Shopping &amp; Lifestyle</strong>
+            <p>Close to Gandhi Bazaar and Jayanagar 4th Block, offering a perfect blend of heritage and modern retail.</p>
+          </div>
+          <div class="highlight">
+            <span class="highlight__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <strong>Metro Access</strong>
+            <p>Excellent proximity to South End Circle and Jayanagar Metro Stations (Green Line).</p>
+          </div>
+          <div class="highlight">
+            <span class="highlight__icon"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+            <strong>Educational Hub</strong>
+            <p>Surrounded by premier institutions like National College and BMS College of Engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="distances">
+      <div class="distances__head">MAIA Seven enjoys excellent connectivity while being nestled in a quiet residential pocket of Basavanagudi.</div>
+      <table class="distances__table">
+        <thead><tr><th>Landmark</th><th>Approx. Distance</th><th>Travel Time</th></tr></thead>
+        <tbody>
+          <tr><td>Jayanagar Metro Station</td><td>~2.3 km</td><td><span class="time">~8 min</span></td></tr>
+          <tr><td>Rashtreeya Vidyalaya Road Metro</td><td>~2.8 km</td><td><span class="time">~8–10 min</span></td></tr>
+          <tr><td>Gandhi Bazaar</td><td>~1.8–2.0 km</td><td><span class="time">~6–8 min</span></td></tr>
+          <tr><td>Lalbagh Botanical Garden</td><td>~3.0–3.5 km</td><td><span class="time">~8–12 min</span></td></tr>
+          <tr><td>Bull Temple / Bugle Rock Park</td><td>~1.5–2.0 km</td><td><span class="time">~6–8 min</span></td></tr>
+          <tr><td>Manipal Hospital, Jayanagar</td><td>~4.5–5.0 km</td><td><span class="time">~12–15 min</span></td></tr>
+          <tr><td>MG Road</td><td>~7.5–8.5 km</td><td><span class="time">~20–30 min</span></td></tr>
+          <tr><td>Kempegowda International Airport</td><td>~35–38 km</td><td><span class="time">~45–60 min</span></td></tr>
+        </tbody>
+      </table>
+      <p class="distances__note">Note: Distances and travel times are approximate and may vary based on traffic conditions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANS & PRICING ============ -->
+<section class="plans section" id="pricing">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Plans &amp; Pricing</h2>
+      <p class="lead">Explore our exclusive 4 BHK configurations designed for ultimate luxury.</p>
+    </div>
+    <div class="plans__grid">
+      <div class="plans__main">
+        <div class="plans__bar">
+          <div class="seg" role="tablist">
+            <button class="seg__btn is-active" data-view="plans" role="tab">Floor Plans</button>
+            <button class="seg__btn" data-view="comparison" role="tab">Comparison</button>
+          </div>
+          <button class="plans__detailed" data-open-modal>Detailed Layouts <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+
+        <div class="plans__viewer" data-view-panel="plans">
+          <div class="plans__tabs">
+            <button class="plans__tab is-active" data-plan="a">Luxury 4 BHK (Type A)</button>
+            <button class="plans__tab" data-plan="b">Ultra-Luxury 4 BHK (Type B)</button>
+          </div>
+          <div class="plans__stage">
+            <div class="plans__meta" data-plan-meta>
+              <span class="tiny-label">Super Built-Up Area</span><strong data-sba>4,400 Sq.Ft</strong>
+              <span class="tiny-label">Carpet Area</span><strong data-carpet>3,150 Sq.Ft</strong>
+            </div>
+            <div class="plans__canvas" data-plan-canvas>
+              <img src="images/floor-plan-a.jpg" alt="Type A floor plan (protected)" data-plan-img />
+              <div class="plans__lock">
+                <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+                <span class="tiny-label">Detailed Plan Protected</span>
+                <p>Please submit an enquiry to view High-Resolution Floor Plans</p>
+              </div>
+            </div>
+            <div class="plans__zoom">
+              <button data-zoom="in" aria-label="Zoom in"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5M8 11h6M11 8v6"/></svg></button>
+              <button data-zoom="out" aria-label="Zoom out"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5M8 11h6"/></svg></button>
+              <button data-zoom="reset" aria-label="Reset"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M12 6l-3 3M12 6l3 3M12 18l-3-3M12 18l3-3M6 12l3-3M6 12l3 3M18 12l-3-3M18 12l-3 3"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="plans__viewer" data-view-panel="comparison" hidden>
+          <table class="compare">
+            <thead><tr><th>Specification</th><th>Type A</th><th>Type B</th></tr></thead>
+            <tbody>
+              <tr><td>Configuration</td><td>4 BHK</td><td>4 BHK + Study</td></tr>
+              <tr><td>Super Built-Up Area</td><td>4,400 Sq.Ft</td><td>4,950 Sq.Ft</td></tr>
+              <tr><td>Carpet Area</td><td>3,150 Sq.Ft</td><td>3,540 Sq.Ft</td></tr>
+              <tr><td>Private Deck</td><td>Yes</td><td>Yes, wrap-around</td></tr>
+              <tr><td>Open Sides</td><td>3</td><td>3+</td></tr>
+              <tr><td>Starting Price</td><td>₹12.5 Cr*</td><td>On request</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Floor plan request form (OTP-verified) -->
+      <aside class="plans__form card-form card-form--center">
+        <h3 class="card-form__title">Floor Plan Request</h3>
+        <p class="card-form__sub">Fill out the form below for exclusive project details.</p>
+        <form class="lead-form" data-form="floorplan" novalidate>
+          <div class="lead-form__fields">
+            <label class="field"><span class="field__label">Full Name</span><input type="text" name="name" placeholder="John Doe" autocomplete="name" required /></label>
+            <label class="field"><span class="field__label">Mobile Number</span><input type="tel" name="phone" placeholder="+91 98765 43210" inputmode="numeric" autocomplete="tel" required /></label>
+            <label class="field"><span class="field__label">Email Address</span><input type="email" name="email" placeholder="john@example.com" autocomplete="email" required /></label>
+            <button type="submit" class="btn btn--dark btn--block">Request Information</button>
+            <p class="lead-form__secure"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg> Secure &amp; Private</p>
+          </div>
+          <div class="otp-step" hidden></div>
+          <div class="lead-form__success" hidden>
+            <div class="lead-form__success-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h3>Request received</h3>
+            <p>High-resolution floor plans will be shared with you shortly.</p>
+          </div>
+        </form>
+        <p class="plans__disclaimer">*Conceptual plans only. Final layout subject to agreement.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="reviews section section--alt" id="reviews">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="h2">Resident &amp; Investor Feedback</h2>
+      <p class="lead">Hear from those who have already experienced the MAIA legacy across our delivered landmarks.</p>
+    </div>
+    <div class="reviews__grid">
+      <article class="review">
+        <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="review__quote">&ldquo;</div>
+        <p>"The delivery experience with MAIA was exemplary. From the precision of the finishes to the transparency in communication, they truly redefined what I expected from a luxury developer in Bangalore."</p>
+        <footer><strong>Rahul Deshpande</strong><span>MAIA 27 Summit Resident</span></footer>
+      </article>
+      <article class="review">
+        <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="review__quote">&ldquo;</div>
+        <p>"MAIA's focus on nature integration at Pelican Grove is stunning. It's rare to find a developer that honors the landscape as much as the structure. The appreciation in value has been a great bonus."</p>
+        <footer><strong>Ananya S.</strong><span>MAIA Pelican Grove Investor</span></footer>
+      </article>
+      <article class="review">
+        <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="review__quote">&ldquo;</div>
+        <p>"Exclusivity is a word often thrown around, but MAIA delivers it. The low-density planning and the quality of the community they have built is exactly what we were looking for in our forever home."</p>
+        <footer><strong>Dr. Vikram K.</strong><span>MAIA 27 Summit Resident</span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq section" id="faq">
+  <div class="container container--narrow">
+    <div class="section__head">
+      <h2 class="h2">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq__list" data-accordion>
+      <details class="faq__item" open>
+        <summary>What makes Maia the seven different from other luxury apartments in Bangalore?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Maia the seven stands apart due to its ultra-low density design, with only 128 exclusive 4 BHK residences across 36 floors. Each floor has just two apartments, one per wing, ensuring unmatched privacy, abundant natural light, and a villa-like living experience in the heart of Basavanagudi.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Is Maia the seven a good choice for large families?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Yes. Every home is a spacious 4 BHK ranging from 4,400 to 4,950 sq.ft., with generous private decks, separate family and formal living zones, and staff quarters — ideal for multi-generational families who value both togetherness and privacy.</div>
+      </details>
+      <details class="faq__item">
+        <summary>What configurations are available at Maia the seven?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Maia the seven is a single-typology community offering only 4 BHK residences in two variants — Luxury Type A (4,400 sq.ft.) and Ultra-Luxury Type B (4,950 sq.ft.) — starting from ₹12.5 Cr*.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Where is Maia the seven located?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">The project is located in Basavanagudi, South Bengaluru — minutes from Bull Temple, Gandhi Bazaar, Lalbagh and the Jayanagar and South End Circle metro stations.</div>
+      </details>
+      <details class="faq__item">
+        <summary>What kind of amenities are available at Maia the seven?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Residents enjoy infinity and sky pools, a Technogym-equipped fitness centre, gourmet dining with a dedicated chef, yoga and zen decks, a private 4K theatre and gaming lounge, 5-tier smart security and MAIA Life concierge services, spread across 100,000+ sq.ft. of amenity space.</div>
+      </details>
+      <details class="faq__item">
+        <summary>How does Maia the seven ensure privacy for residents?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">With just two homes per floor, no common walls between residences, private lift lobbies and over 72% open landscaped area, every home feels like an independent bungalow in the sky.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Does Maia the seven offer good metro connectivity?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Yes. Jayanagar Metro Station is about 2.3 km away and Rashtreeya Vidyalaya Road Metro about 2.8 km, both on the Green Line, giving quick access to MG Road, Majestic and the rest of the city.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Is Maia the seven suitable as a long-term investment?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Basavanagudi is a land-constrained heritage micro-market where new launches are rare. A 3.7-acre, 128-home development here is virtually unprecedented, making it a scarce, legacy-grade asset with strong long-term appreciation potential.</div>
+      </details>
+      <details class="faq__item">
+        <summary>What type of buyers is Maia the seven designed for?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">It is designed for discerning end-users and HNI investors looking for a bungalow-substitute in central South Bengaluru — those who value heritage surroundings, low density and hotel-inspired living.</div>
+      </details>
+      <details class="faq__item">
+        <summary>Why is Maia the seven considered a landmark project in Basavanagudi?<span class="faq__toggle"></span></summary>
+        <div class="faq__body">Its scale, twin sky-bridge towers, flowing architectural signature and single-format 4 BHK inventory make it the largest ultra-luxury development the neighbourhood has seen in over a decade.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#home" class="logo"><span class="logo__dot"></span>MAIA SEVEN</a>
+        <p>Redefining luxury living in the heart of Basavanagudi. Twin towers connected by a sky deck.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6 9v12M6 4v1M10 21v-7a3 3 0 016 0v7M10 9v12"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Project</h4>
+        <a href="#overview">Overview</a><a href="#amenities">Amenities</a><a href="#pricing">Floor Plans</a><a href="#location">Location</a>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="#overview">About Developer</a><a href="#" data-open-modal>Contact Sales</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>Basavanagudi, Bengaluru,<br>Karnataka 560004</p>
+        <button class="btn btn--lime btn--block" data-open-modal>Contact Sales</button>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 MAIA Estates Authorized Partner. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></span>
+    </div>
+    <div class="footer__disclaimer">
+      <p>We are not MAIA Estates. The information provided on this website is intended solely for general informational purposes and should not be construed as an offer, promise, or commitment to provide any service. All details, including pricing, specifications, and availability, are subject to change without prior notice at the sole discretion of the respective developers or sellers. Images, graphics, and visuals displayed on this site are for illustrative and representational purposes only and may not accurately depict the final product.</p>
+      <p>This is the official website of an authorized marketing partner and not the developer's official website. While we strive to maintain accuracy in the information shared, we do not guarantee completeness, accuracy, or reliability. Property availability, layouts, and project approvals are subject to verification and applicable laws. Visitors are strongly advised to verify all details, including RERA registration, directly with the concerned developer or authorized representatives before making any purchase decisions.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ POPUP FORM (OTP-verified) ============ -->
+<div class="modal" id="enquiry-modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__dialog card-form" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal__close" data-close-modal aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 class="card-form__title" id="modal-title">Register Interest</h2>
+    <p class="card-form__sub">Get exclusive early-bird offers and project details.</p>
+    <form class="lead-form" data-form="popup" novalidate>
+      <p class="lead-form__hint">Fill out the form below for exclusive project details.</p>
+      <div class="lead-form__fields">
+        <label class="field"><span class="field__label">Full Name</span><input type="text" name="name" placeholder="John Doe" autocomplete="name" required /></label>
+        <label class="field"><span class="field__label">Mobile Number</span><input type="tel" name="phone" placeholder="+91 98765 43210" inputmode="numeric" autocomplete="tel" required /></label>
+        <label class="field"><span class="field__label">Email Address</span><input type="email" name="email" placeholder="john@example.com" autocomplete="email" required /></label>
+        <button type="submit" class="btn btn--dark btn--block">Request Information</button>
+        <p class="lead-form__secure"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg> Secure &amp; Private</p>
+      </div>
+      <div class="otp-step" hidden></div>
+      <div class="lead-form__success" hidden>
+        <div class="lead-form__success-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h3>Thank you!</h3>
+        <p>Your number is verified and our team will reach out shortly with project details.</p>
+      </div>
+      <p class="lead-form__legal">By submitting, you agree to our privacy policy and terms of service.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Sticky mobile CTA -->
+<div class="mobile-cta"><button class="btn btn--lime btn--block" data-open-modal>Enquire Now</button></div>
+
+<script src="js/config.js"></script>
+<script src="https://verify.msg91.com/otp-provider.js"></script>
+<script src="js/otp.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
