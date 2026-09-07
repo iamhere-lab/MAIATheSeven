@@ -47,10 +47,13 @@
       <p class="ty__verified"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.4-8 11-4.5-1.6-8-6-8-11V5l8-3z"/></svg> Mobile number verified via OTP</p>
     </div>
   </main>
-  <script>
+    <script>
     (function(){
-      var n = new URLSearchParams(location.search).get("name");
-      if (n) document.querySelector("[data-name]").textContent = n.split(" ")[0];
+      try {
+        var d = JSON.parse(sessionStorage.getItem("maia_ty") || "{}");
+        if (d.name) document.querySelector("[data-name]").textContent = d.name.split(" ")[0];
+        sessionStorage.removeItem("maia_ty");
+      } catch (_) {}
     })();
   </script>
 </body>
