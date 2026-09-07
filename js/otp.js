@@ -189,9 +189,9 @@
       document.dispatchEvent(new CustomEvent("maia:lead", { detail: payload }));
 
       if (CFG.thankYouUrl) {
-        const q = new URLSearchParams({ name: payload.name, src: payload.source });
-        location.assign(CFG.thankYouUrl + (CFG.thankYouUrl.includes("?") ? "&" : "?") + q.toString());
-      } else {
+  sessionStorage.setItem("maia_ty", JSON.stringify({ name: payload.name, src: payload.source }));
+  location.assign(CFG.thankYouUrl);
+} else {
         showSuccess(form);
       }
     } catch (e) {
