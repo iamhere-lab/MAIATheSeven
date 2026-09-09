@@ -111,6 +111,19 @@ svg{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-l
 .lead-form__success p{margin:0;font-size:13px;color:var(--muted)}
 .lead-form__error{font-size:12px;color:#c93b28;background:#fff3f1;border:1px solid #f7d4cf;border-radius:10px;padding:10px 12px;margin-top:14px}
 
+/* OTP step */
+.otp-step{text-align:center}
+.otp-step__title{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:6px 0 6px;color:var(--ink)}
+.otp-step__sub{font-size:12.5px;color:var(--muted);margin:0 0 22px}
+.otp-step__sub strong{color:var(--ink)}
+.otp-step__boxes{display:flex;justify-content:center;gap:8px;margin-bottom:18px}
+.otp-step__boxes input{width:44px;height:52px;text-align:center;font-size:20px;font-weight:700;border:1px solid var(--line);background:var(--bg-alt);border-radius:12px;color:var(--ink);letter-spacing:0}
+.otp-step__boxes input:focus{outline:none;border-color:var(--dark);background:#fff;box-shadow:0 0 0 3px rgba(226,255,139,.55)}
+.otp-step__meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--muted);margin-top:16px}
+.otp-step__meta button{color:var(--dark);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.otp-step__meta button[disabled]{color:#a3adad;text-decoration:none;cursor:default}
+.otp-step .btn--block{margin-top:6px}
+
 /* ---------- nav ---------- */
 .nav{position:sticky;top:12px;z-index:50;margin-top:-40px;padding:0 24px;pointer-events:none}
 .nav__pill{pointer-events:auto;max-width:860px;margin:0 auto;background:#fff;border-radius:999px;padding:8px 8px 8px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 10px 30px -10px rgba(6,27,28,.18),0 1px 0 rgba(6,27,28,.04)}
@@ -379,4 +392,5 @@ body.modal-open{overflow:hidden}
   .footer__grid{grid-template-columns:1fr;gap:32px}
   .footer__bottom{flex-direction:column;gap:12px;align-items:flex-start}
   .footer__bottom a{margin:0 18px 0 0}
+  .otp-step__boxes input{width:38px;height:48px}
 }
