@@ -586,6 +586,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Sticky mobile CTA -->
 <div class="mobile-cta"><button class="btn btn--lime btn--block" data-open-modal>Enquire Now</button></div>
 
+<!-- ============ IP CAPTURE (adds ip_address to every lead POST) ============ -->
+<script>
+(function () {
+  // 1. Resolve the visitor's public IP once, on page load (OTP step gives it plenty of time).
+  var IP_SOURCES = [
+    ["https://api.ipify.org?format=json", function (r) { return r.json().then(function (j) { return j.ip; }); }],
+    ["https://api64.ipify.org?format=json", function (r) { return r.json().then(function (j) { return j.ip; }); }],
+    ["https://icanhazip.com", function (r) { return r.text(); }]
+  ];
+  window.__leadIP = "";
+  (function tryNext(i) {
+    if (i >= IP_SOURCES.length) return;
+    fetch(IP_SOURCES[i][0], { cache: "no-store" })
+      .then(IP_SOURCES[i][1])
+      .then(function (ip) { ip = String(ip || "").trim(); if (ip) window.__leadIP = ip; else tryNext(i + 1); })
+      .catch(function () { tryNext(i + 1); });
+  })(0);
+
+  // 2. Append ?ip_address=... to any request going to the Apps Script endpoint.
+  //    Apps Script reads query params into e.parameter, and parseBody_ merges them —
+  //    so this works whatever body format main.js sends (JSON, form-encoded, FormData, Blob).
+  function isLeadUrl(u) { return typeof u === "string" && u.indexOf("script.google.com/macros") !== -1; }
+  function withIP(u) {
+    if (!isLeadUrl(u) || !window.__leadIP) return u;
+    return u + (u.indexOf("?") === -1 ? "?" : "&") + "ip_address=" + encodeURIComponent(window.__leadIP);
+  }
+
+  var _fetch = window.fetch;
+  window.fetch = function (input, init) {
+    if (typeof input === "string") input = withIP(input);
+    else if (input && input.url && isLeadUrl(input.url)) input = new Request(withIP(input.url), input);
+    return _fetch.call(this, input, init);
+  };
+
+  if (navigator.sendBeacon) {
+    var _beacon = navigator.sendBeacon.bind(navigator);
+    navigator.sendBeacon = function (url, data) { return _beacon(withIP(url), data); };
+  }
+
+  var _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (method, url) {
+    var args = Array.prototype.slice.call(arguments);
+    args[1] = withIP(url);
+    return _open.apply(this, args);
+  };
+})();
+</script>
 <script src="js/config.js"></script>
 <script src="https://verify.msg91.com/otp-provider.js"></script>
 <script src="js/otp.js"></script>
