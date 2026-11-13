@@ -712,3 +712,12 @@ body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 .sw-name { white-space: nowrap; }
 @media (min-width: 700px) { .loc-tabs { grid-template-columns: repeat(5, 1fr); } }
 @media (max-width: 699px) { .loc-tabs li:nth-child(4) { grid-column: 1 / span 1; } .loc-tabs { grid-template-columns: repeat(6, 1fr); } .loc-tabs li { grid-column: span 2; } .loc-tabs li:nth-child(4), .loc-tabs li:nth-child(5) { grid-column: span 3; } }
+
+/* MAIA SEVEN logo, as on the earlier page: lime ring + bold wordmark */
+.logo { display: inline-flex; align-items: center; gap: .62em; font-family: "Inter", var(--sans); font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: -.01em; color: #0b1a1a; white-space: nowrap; }
+.logo__dot { position: relative; flex: none; width: 1em; height: 1em; border-radius: 50%; background: var(--lime); }
+.logo__dot::after { content: ""; position: absolute; inset: 25%; border-radius: 50%; background: #061b1c; }
+.logo-intro, .logo-about { font-size: 30px; }
+.logo-foot { font-size: 15px; margin-top: 2px; }
+@media (max-width: 480px) { .logo-head { font-size: 14px; gap: .5em; } .brand-lockup { gap: 8px; } .brand-cp { font-size: 9px; letter-spacing: .06em; } }
+@media (max-width: 379px) { .logo-head { font-size: 13px; } }
