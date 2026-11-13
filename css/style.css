@@ -752,3 +752,10 @@ body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 .brand-lockup .brand-logo { height: 50px; width: auto; max-width: none; }
 @media (max-width: 480px) { .brand-lockup .brand-logo { height: 40px; } }
 @media (max-width: 379px) { .brand-lockup .brand-logo { height: 34px; } }
+
+/* official MAIA logo in the intro band, About and footer */
+.maia-logo { display: block; width: auto; max-width: none; }
+.intro-logo .maia-logo-intro { height: 104px; width: auto; }
+.about-logo .maia-logo-about { height: 112px; width: auto; margin: 0 auto; }
+.foot-grid .maia-logo-foot { height: 56px; width: auto; }
+@media (max-width: 899px) { .intro-logo .maia-logo-intro { height: 84px; } }
