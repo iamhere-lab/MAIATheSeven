@@ -1,114 +1,157 @@
 /* ==========================================================
-   MAIA The Seven — page behaviour (no tracking of any kind)
+   MAIA The Seven — page behaviour.
+   Header menu, enquiry popup (auto + on click), lightbox,
+   amenity and location tabs, FAQ. Lead capture and OTP live
+   in otp.js; this file adds no tracking of its own.
    ========================================================== */
 (function () {
   "use strict";
-  const CFG = window.MAIA_CONFIG || {};
-  const $ = (s, r) => (r || document).querySelector(s);
-  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
-
-  /* ---------- mobile nav ---------- */
-  const nav = $("#nav"), burger = $(".nav__burger");
-  burger.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    burger.setAttribute("aria-expanded", open);
-  });
-  $$(".nav__links a").forEach((a) => a.addEventListener("click", () => nav.classList.remove("is-open")));
-
-  /* ---------- enquiry modal ---------- */
-  const modal = $("#enquiry-modal");
-  let lastFocus = null;
-  function openModal() {
-    lastFocus = document.activeElement;
-    modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-    const first = $("input", modal); if (first) setTimeout(() => first.focus(), 60);
+  var CFG = window.MAIA_CONFIG || {};
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function ss(key, val) {
+    try {
+      if (val === undefined) return sessionStorage.getItem(key);
+      sessionStorage.setItem(key, val);
+    } catch (e) { return null; }
   }
-  function closeModal() {
-    modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-    if (lastFocus) lastFocus.focus();
-  }
-  $$("[data-open-modal]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); openModal(); }));
-  $$("[data-close-modal]").forEach((b) => b.addEventListener("click", closeModal));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal(); });
 
-  /* auto popup (once per session, never after a submitted lead) */
-  if (CFG.autoPopupSeconds > 0 && !sessionStorage.getItem("maia_popup_shown")) {
-    setTimeout(() => {
-      if (sessionStorage.getItem("maia_lead_done")) return;
-      sessionStorage.setItem("maia_popup_shown", "1");
-      if (!modal.classList.contains("is-open")) openModal();
-    }, CFG.autoPopupSeconds * 1000);
-  }
-  document.addEventListener("maia:lead", (e) => {
-    if (e.detail && e.detail.source === "popup") setTimeout(closeModal, 2500);
-  });
-
-  /* ---------- features slider ---------- */
-  $$("[data-slider]").forEach((slider) => {
-    const slides = $$(".slide", slider), dots = $("[data-dots]", slider);
-    let i = 0, timer;
-    slides.forEach((_, k) => {
-      const d = document.createElement("button");
-      d.setAttribute("aria-label", "Go to slide " + (k + 1));
-      d.addEventListener("click", () => go(k));
-      dots.appendChild(d);
-    });
-    function go(k) {
-      i = (k + slides.length) % slides.length;
-      slides.forEach((s, j) => s.classList.toggle("is-active", j === i));
-      $$("button", dots).forEach((d, j) => d.classList.toggle("is-active", j === i));
-      restart();
+  /* ---------- header section menu ---------- */
+  var nav = $("#site-nav"), toggle = $(".nav-toggle");
+  function setMenu(open) {
+    if (!nav) return;
+    nav.classList.toggle("is-open", open);
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     }
-    function restart() { clearInterval(timer); timer = setInterval(() => go(i + 1), 7000); }
-    $("[data-prev]", slider).addEventListener("click", () => go(i - 1));
-    $("[data-next]", slider).addEventListener("click", () => go(i + 1));
-    go(0);
+  }
+  if (nav) {
+    if (toggle) toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("is-open")); });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("click", function (e) {
+      if (!nav.contains(e.target) && toggle && !toggle.contains(e.target)) setMenu(false);
+    });
+    var links = $$("a", nav);
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (l) { l.classList.toggle("is-active", l.getAttribute("href") === "#" + en.target.id); });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      links.forEach(function (l) { var s = $(l.getAttribute("href")); if (s) io.observe(s); });
+    }
+  }
+
+  /* ---------- enquiry popup ---------- */
+  var layer = $("#enquiry-modal");
+  var modalTitle = layer ? $(".js-modal-title", layer) : null;
+  var lastFocus = null, formStarted = false;
+  var INTENTS = {
+    general:    { title: "Unlock price & floor plans", button: "Get Price Sheet & Floor Plans" },
+    price:      { title: "Get the complete price sheet", button: "Send Me the Price Sheet" },
+    floor_plan: { title: "Download the floor plans", button: "Send Me the Floor Plans" },
+    site_visit: { title: "Book your private site visit", button: "Reserve My Visit Slot" },
+    callback:   { title: "Request a call back", button: "Call Me Back" }
+  };
+  function isOpen() { return layer && !layer.hidden; }
+  function openEnquiry(intent, auto) {
+    if (!layer) return;
+    var it = INTENTS[intent] || INTENTS.general;
+    if (modalTitle) modalTitle.textContent = it.title;
+    var btn = $('.lead-form__fields button[type="submit"]', layer);
+    if (btn && !btn.disabled) btn.textContent = it.button;
+    if (!isOpen()) lastFocus = document.activeElement;
+    layer.hidden = false;
+    document.documentElement.classList.add("modal-open");
+    ss("maia_popup_shown", "1");
+    var first = $('input[name="name"]', layer);
+    if (first && !auto && !$(".lead-form__fields", layer).hidden) setTimeout(function () { first.focus(); }, 40);
+  }
+  function closeEnquiry() {
+    if (!isOpen()) return;
+    layer.hidden = true;
+    document.documentElement.classList.remove("modal-open");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if (layer) {
+    layer.addEventListener("click", function (e) {
+      if (e.target === layer || e.target.closest("[data-close]")) closeEnquiry();
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest(".js-open-enquiry");
+    if (!el) return;
+    e.preventDefault();
+    openEnquiry(el.getAttribute("data-intent") || "general", false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (isOpen()) closeEnquiry(); else setMenu(false);
+  });
+  document.addEventListener("focusin", function (e) { if (e.target.closest && e.target.closest("form.lead-form")) formStarted = true; });
+
+  /* auto popup: once per session, never after a submitted lead or once a form is in use */
+  var delay = Number(CFG.autoPopupSeconds);
+  if (layer && delay > 0 && !ss("maia_popup_shown") && !ss("maia_lead_done")) {
+    setTimeout(function () {
+      if (ss("maia_lead_done") || ss("maia_popup_shown") || formStarted || isOpen()) return;
+      if ($("dialog[open]")) return;
+      openEnquiry("general", true);
+    }, delay * 1000);
+  }
+  document.addEventListener("maia:lead", function (e) {
+    if (e.detail && e.detail.source === "popup" && !CFG.thankYouUrl) setTimeout(closeEnquiry, 2500);
   });
 
-  /* ---------- plans: view toggle & type tabs ---------- */
-  $$(".seg__btn").forEach((b) => b.addEventListener("click", () => {
-    $$(".seg__btn").forEach((x) => x.classList.toggle("is-active", x === b));
-    $$("[data-view-panel]").forEach((p) => (p.hidden = p.dataset.viewPanel !== b.dataset.view));
-  }));
-  const PLANS = { a: { img: "images/floor-plan-a.jpg", sba: "4,400 Sq.Ft", carpet: "3,150 Sq.Ft" },
-                  b: { img: "images/floor-plan-b.jpg", sba: "4,950 Sq.Ft", carpet: "3,540 Sq.Ft" } };
-  $$(".plans__tab").forEach((t) => t.addEventListener("click", () => {
-    $$(".plans__tab").forEach((x) => x.classList.toggle("is-active", x === t));
-    const p = PLANS[t.dataset.plan];
-    $("[data-plan-img]").src = p.img; $("[data-sba]").textContent = p.sba; $("[data-carpet]").textContent = p.carpet;
-    resetZoom();
-  }));
+  /* ---------- gallery lightbox ---------- */
+  var lb = $("#lightbox");
+  if (lb) {
+    var lbImg = $("img", lb), lbCap = $("figcaption", lb), lbItems = [], lbIndex = 0;
+    var lbShow = function (i) {
+      lbIndex = (i + lbItems.length) % lbItems.length;
+      var el = lbItems[lbIndex], cap = el.getAttribute("data-caption") || "";
+      lbImg.src = el.getAttribute("data-full");
+      lbImg.alt = cap; lbCap.textContent = cap;
+    };
+    $$(".js-lightbox").forEach(function (el) {
+      el.addEventListener("click", function () {
+        lbItems = $$(".js-lightbox"); lbShow(lbItems.indexOf(el));
+        if (typeof lb.showModal === "function") lb.showModal(); else window.open(el.getAttribute("data-full"), "_blank");
+      });
+    });
+    $(".lb-prev", lb).addEventListener("click", function () { lbShow(lbIndex - 1); });
+    $(".lb-next", lb).addEventListener("click", function () { lbShow(lbIndex + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target.closest("[data-close]")) lb.close(); });
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") lbShow(lbIndex + 1);
+      if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
+    });
+  }
 
-  /* ---------- plans: zoom & pan on the (protected) preview ---------- */
-  const canvas = $("[data-plan-canvas]"), planImg = $("[data-plan-img]");
-  let scale = 1, tx = 0, ty = 0, drag = null;
-  function apply() { planImg.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`; }
-  function resetZoom() { scale = 1; tx = 0; ty = 0; apply(); }
-  $$("[data-zoom]").forEach((b) => b.addEventListener("click", () => {
-    const z = b.dataset.zoom;
-    if (z === "in") scale = Math.min(3, scale + .25);
-    else if (z === "out") scale = Math.max(.5, scale - .25);
-    else return resetZoom();
-    apply();
-  }));
-  canvas.addEventListener("pointerdown", (e) => { drag = { x: e.clientX - tx, y: e.clientY - ty }; canvas.classList.add("is-dragging"); canvas.setPointerCapture(e.pointerId); });
-  canvas.addEventListener("pointermove", (e) => { if (!drag) return; tx = e.clientX - drag.x; ty = e.clientY - drag.y; apply(); });
-  ["pointerup", "pointercancel"].forEach((ev) => canvas.addEventListener(ev, () => { drag = null; canvas.classList.remove("is-dragging"); }));
+  /* ---------- amenity + location tabs ---------- */
+  function wireTabs(tabSel, panelSel) {
+    var tabs = $$(tabSel);
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () {
+        tabs.forEach(function (o) {
+          o.classList.toggle("is-active", o === t);
+          o.setAttribute("aria-selected", o === t ? "true" : "false");
+        });
+        $$(panelSel).forEach(function (p) {
+          var on = p.id === t.getAttribute("data-target");
+          p.hidden = !on; p.classList.toggle("is-active", on);
+        });
+      });
+    });
+  }
+  wireTabs(".am-tab", ".am-panel");
+  wireTabs(".loc-tab", ".loc-panel");
 
   /* ---------- FAQ: one open at a time ---------- */
-  const acc = $("[data-accordion]");
-  if (acc) acc.addEventListener("toggle", (e) => {
-    if (e.target.open) $$("details", acc).forEach((d) => { if (d !== e.target) d.open = false; });
+  var acc = $("[data-accordion]");
+  if (acc) acc.addEventListener("toggle", function (e) {
+    if (e.target.open) $$("details", acc).forEach(function (d) { if (d !== e.target) d.open = false; });
   }, true);
-
-  /* ---------- smooth anchor offset for sticky nav ---------- */
-  $$('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href"); if (id.length < 2) return;
-    const el = $(id); if (!el) return;
-    e.preventDefault();
-    const y = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }));
 })();

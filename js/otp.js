@@ -85,7 +85,7 @@
         ${Array.from({ length: OTP_LEN }).map((_, i) =>
           `<input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit ${i + 1}" autocomplete="${i === 0 ? "one-time-code" : "off"}" />`).join("")}
       </div>
-      <button type="button" class="btn btn--dark btn--block" data-verify>Verify &amp; Submit</button>
+      <button type="button" class="btn-outline btn-submit" data-verify>Verify &amp; Submit</button>
       <div class="otp-step__meta">
         <button type="button" data-edit>Change number</button>
         <span data-resend-wrap>Resend in <span data-timer>${OTP.resendAfterSeconds || 30}</span>s</span>
@@ -227,15 +227,16 @@
         return;
       }
       const btn = $('button[type="submit"]', form);
+      const label = btn.textContent;      // the popup changes this label per CTA, so restore whatever it was
       btn.disabled = true; btn.textContent = "Sending OTP…";
       window.sendOtp(digits,
         () => {
-          btn.disabled = false; btn.textContent = "Request Information";
+          btn.disabled = false; btn.textContent = label;
           $(".lead-form__fields", form).hidden = true;
           renderOtpStep(form, digits);
         },
         (err) => {
-          btn.disabled = false; btn.textContent = "Request Information";
+          btn.disabled = false; btn.textContent = label;
           showFormError(form, msgFromMsg91(err));
         });
     });
