@@ -723,26 +723,21 @@ body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 @media (max-width: 379px) { .logo-head { font-size: 13px; } }
 
 /* Typefaces follow the developer's site (maiaestates.in): Albert Sans for text.
-   Their heading face, Teodor, is a licensed font, so headings use Instrument Serif as the closest free match. */
+   Their heading face, Teodor, is a licensed font, so headings use Newsreader, a free serif
+   with normal letter widths and open spacing (the earlier condensed stand-in was hard to read). */
 :root {
-  --serif: "Instrument Serif", "Teodor", Georgia, "Times New Roman", serif;
+  --serif: "Newsreader", "Teodor", Georgia, "Times New Roman", serif;
   --sans: "Albert Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
-.display { font-weight: 400; font-size: clamp(38px, 4.2vw, 54px); line-height: 1.08; letter-spacing: -.02em; }
-.form-title, .hero-price, .loc-panel h3, .modal-offer h3, .otp-step__title, .lead-form__success h3, .faq-item summary + p { font-weight: 400; }
-.form-title { font-size: 32px; letter-spacing: -.01em; line-height: 1.1; }
-.hero-form .form-title { font-size: 30px; }
-.modal-inner .form-title { font-size: 32px; }
-.modal-offer h3 { font-size: 26px; letter-spacing: -.01em; }
-@media (min-width: 860px) { .modal-offer h3 { font-size: 31px; } }
-.hero-price { font-size: 24px; letter-spacing: -.005em; }
-@media (min-width: 900px) { .hero-price { font-size: 29px; } }
-.loc-panel h3 { font-size: 30px; letter-spacing: -.01em; }
-.otp-step__title { font-size: 26px; }
-.lead-form__success h3 { font-size: 28px; }
-.intro-text h1 em { font-weight: 400; font-size: 1.2em; }
-.hl-grid em { font-size: 1.2em; line-height: 1.2; }
-.sw-name { font-family: var(--serif); font-weight: 400; letter-spacing: -.02em; }
+.display { font-weight: 500; font-size: clamp(32px, 3.6vw, 44px); line-height: 1.15; letter-spacing: 0; }
+.form-title, .hero-price, .loc-panel h3, .modal-offer h3, .otp-step__title, .lead-form__success h3 { font-weight: 500; letter-spacing: 0; }
+.form-title { font-size: 28px; line-height: 1.15; }
+.hero-form .form-title { font-size: 25px; }
+.modal-inner .form-title { font-size: 27px; }
+.hero-price { font-size: 21px; }
+@media (min-width: 900px) { .hero-price { font-size: 25px; } }
+.intro-text h1 em { font-weight: 400; font-size: 1.08em; letter-spacing: .005em; }
+.hl-grid em { font-size: 1.06em; line-height: 1.35; letter-spacing: .005em; }
 .site-nav a { font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 12.5px; }
 @media (min-width: 900px) and (max-width: 1240px) { .site-nav a { font-size: 11.5px; } }
 @media (max-width: 1099px) { .site-nav a { font-size: 14px; } }
@@ -752,3 +747,8 @@ body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 .hero-mark.hero-lockup { filter: drop-shadow(0 4px 16px rgba(0,0,0,.45)); margin-bottom: 20px; }
 .modal-offer .seven-logo--modal { position: static; width: min(250px, 78%); height: auto; filter: none; object-fit: contain; background: none; }
 .modal-offer > img.modal-photo { filter: saturate(.7) brightness(.72); }
+
+/* header: official MAIA logo from the developer's site */
+.brand-lockup .brand-logo { height: 50px; width: auto; max-width: none; }
+@media (max-width: 480px) { .brand-lockup .brand-logo { height: 40px; } }
+@media (max-width: 379px) { .brand-lockup .brand-logo { height: 34px; } }
