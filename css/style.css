@@ -746,3 +746,9 @@ body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 .site-nav a { font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 12.5px; }
 @media (min-width: 900px) and (max-width: 1240px) { .site-nav a { font-size: 11.5px; } }
 @media (max-width: 1099px) { .site-nav a { font-size: 14px; } }
+
+/* The Seven project logo, as on maiaestates.in (emblem + THE SEVEN / BASAVANAGUDI) */
+.seven-logo { display: block; width: clamp(250px, 30vw, 420px); height: auto; max-width: 100%; }
+.hero-mark.hero-lockup { filter: drop-shadow(0 4px 16px rgba(0,0,0,.45)); margin-bottom: 20px; }
+.modal-offer .seven-logo--modal { position: static; width: min(250px, 78%); height: auto; filter: none; object-fit: contain; background: none; }
+.modal-offer > img.modal-photo { filter: saturate(.7) brightness(.72); }
